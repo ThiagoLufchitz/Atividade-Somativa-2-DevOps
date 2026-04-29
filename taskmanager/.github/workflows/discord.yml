@@ -1,0 +1,16 @@
+name: Discord Alert
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+          -d '{"content":"Build executada com sucesso"}' \
+          ${{ secrets.DISCORD_WEBHOOK }}
