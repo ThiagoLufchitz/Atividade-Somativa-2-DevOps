@@ -104,4 +104,5 @@ class TaskServiceTest {
         assertNotNull(service.findTask("Manter 2"));
         assertNull(service.findTask("Remover"));
     }
+    
 }
