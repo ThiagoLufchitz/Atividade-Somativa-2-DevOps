@@ -90,4 +90,18 @@ class TaskServiceTest {
     void shouldReturnFalseWhenRemovingNonexistentTask() {
         assertFalse(service.removeTask("Fantasma"));
     }
+
+    @Test
+    void shouldKeepOtherTasksWhenRemovingOne() {
+        service.addTask("Manter 1");
+        service.addTask("Remover");
+        service.addTask("Manter 2");
+
+        service.removeTask("Remover");
+
+        assertEquals(2, service.listTasks().size());
+        assertNotNull(service.findTask("Manter 1"));
+        assertNotNull(service.findTask("Manter 2"));
+        assertNull(service.findTask("Remover"));
+    }
 }
